@@ -1,0 +1,24 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "API Automation Testing",
+  "main": "",
+  "scripts": {
+    "newman": "newman run ./Newman/Collection/API_AUTOMATION_Collection.postman_collection.json -e ./Newman/Environment/QA_Env.postman_environment.json -r htmlextra --reporter-htmlextra-export ./results/report.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfredPolanco/API-AUTOMATION.git"
+  },
+  "keywords": [
+    "API",
+    "TEST",
+    "AUTOMATION"
+  ],
+  "author": "Alfredo Polanco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlfredPolanco/API-AUTOMATION/issues"
+  },
+  "homepage": "https://github.com/AlfredPolanco/API-AUTOMATION#readme"
+}

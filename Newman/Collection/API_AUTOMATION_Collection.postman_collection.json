@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "ed983360-cf5f-4462-b9ed-539e01a48c7a",
+		"name": "API AUTOMATION Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20755446"
+	},
+	"item": [
+		{
+			"name": "List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Page assertions\", function () {",
+							"    var jsonData = pm.response.json()",
+							"    pm.expect(jsonData.page).to.eql(2);",
+							"    pm.expect(jsonData.per_page).to.eql(6);",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"page\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"List users\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/users?page=2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Page assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.page).to.eql(1);",
+							"    pm.expect(jsonData.total_pages).to.eql(2);",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"page\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"Create user\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/unknown",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"unknown"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"User assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
+							"    pm.expect(jsonData.job).to.eql(\"leader\");",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"createdAt\");",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"id\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"Update user\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"morpheus\",\n    \"job\":\"leader\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/users",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"User assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
+							"    pm.expect(jsonData.job).to.eql(\"zionresident\");",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"updatedAt\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"Update user patch\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"zionresident\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/users/2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user patch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"User assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
+							"    pm.expect(jsonData.job).to.eql(\"zionresident\");",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"updatedAt\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"Delete user\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"morpheus\",\n    \"job\": \"zionresident\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/users/2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});",
+							"",
+							"postman.setNextRequest(\"Register User - SUCCESSFUL\");",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/users/2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User - SUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Register assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"id\");",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"token\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"Register User - UNSUCCESSFUL\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"eve.holt@reqres.in\",\n    \"password\": \"pistol\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/register",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User - UNSUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Register assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error).to.eql(\"Missing password\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"Login SUCCESSFUL\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"sydney@fife\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/register",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login SUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Login assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(JSON.stringify(jsonData)).to.include(\"token\");",
+							"});",
+							"",
+							"postman.setNextRequest(\"Login UNSUCCESSFUL\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"eve.holt@reqres.in\",\n    \"password\": \"cityslicka\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login UNSUCCESSFUL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Login assertions\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.error).to.eql(\"Missing password\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"peter@klaven\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
