@@ -14,8 +14,8 @@ jobs:
         uses: actions/setup-node@v1
 
 
-      # Install the newman command line utility and also install the html extra reporter
-      - name: Install newman
+      # Install the Newman command line utility and also install the html extra reporter
+      - name: Install Newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-htmlextra
