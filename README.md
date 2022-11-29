@@ -21,9 +21,9 @@ The framework contains the following 10 API calls for the website https://reqres
 
 * [Javascript.](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
 * [Nodejs.](https://nodejs.org/en/about/)
-* [Postman](https://www.postman.com/)
-* [Newman](https://www.npmjs.com/package/newman)
-* [Newman reporter](https://www.npmjs.com/package/newman-reporter-htmlextra)
+* [Postman.](https://www.postman.com/)
+* [Newman.](https://www.npmjs.com/package/newman)
+* [Newman reporter.](https://www.npmjs.com/package/newman-reporter-htmlextra)
 
 # Before installing
 
@@ -37,4 +37,4 @@ The framework contains the following 10 API calls for the website https://reqres
 `git clone https://github.com/AlfredPolanco/API-AUTOMATION.git`
 
 * Run the Postman collection with the following command
-`npm run newman` an HTMML will be generated wit the test results
+`npm run newman` an HTML will be generated wit the test results
