@@ -17,11 +17,12 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Page assertions\", function () {",
+							"pm.test(\"List assertions\", function () {",
 							"    var jsonData = pm.response.json()",
 							"    pm.expect(jsonData.page).to.eql(2);",
 							"    pm.expect(jsonData.per_page).to.eql(6);",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"page\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"List users\");"
@@ -63,11 +64,12 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Page assertions\", function () {",
+							"pm.test(\"List assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.page).to.eql(1);",
 							"    pm.expect(jsonData.total_pages).to.eql(2);",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"page\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"Create user\");"
@@ -109,6 +111,7 @@
 							"    pm.expect(jsonData.job).to.eql(\"leader\");",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"createdAt\");",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"id\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"Update user\");"
@@ -158,6 +161,7 @@
 							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
 							"    pm.expect(jsonData.job).to.eql(\"zionresident\");",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"updatedAt\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"Update user patch\");"
@@ -208,6 +212,7 @@
 							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
 							"    pm.expect(jsonData.job).to.eql(\"zionresident\");",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"updatedAt\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"Delete user\");"
@@ -292,6 +297,7 @@
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"id\");",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"token\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"Register User - UNSUCCESSFUL\");"
@@ -339,6 +345,7 @@
 							"pm.test(\"Register assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.error).to.eql(\"Missing password\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"Login SUCCESSFUL\");"
@@ -386,6 +393,7 @@
 							"pm.test(\"Login assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"token\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
 							"postman.setNextRequest(\"Login UNSUCCESSFUL\");"
@@ -433,6 +441,7 @@
 							"pm.test(\"Login assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.error).to.eql(\"Missing password\");",
+							"    pm.expect(jsonData).to.not.be.null;",
 							"});"
 						],
 						"type": "text/javascript"
