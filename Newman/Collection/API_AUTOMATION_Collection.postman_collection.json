@@ -13,18 +13,21 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"List assertions\", function () {",
-							"    var jsonData = pm.response.json()",
+							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.page).to.eql(2);",
 							"    pm.expect(jsonData.per_page).to.eql(6);",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"page\");",
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"List users\");"
 						],
 						"type": "text/javascript"
@@ -60,10 +63,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"List assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.page).to.eql(1);",
@@ -72,6 +77,7 @@
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Create user\");"
 						],
 						"type": "text/javascript"
@@ -101,10 +107,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(201);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"User assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
@@ -114,6 +122,7 @@
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Update user\");"
 						],
 						"type": "text/javascript"
@@ -152,10 +161,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"User assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
@@ -164,6 +175,7 @@
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Update user patch\");"
 						],
 						"type": "text/javascript"
@@ -203,10 +215,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"User assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.name).to.eql(\"morpheus\");",
@@ -215,6 +229,7 @@
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Delete user\");"
 						],
 						"type": "text/javascript"
@@ -254,10 +269,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(204);",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Register User - SUCCESSFUL\");",
 							""
 						],
@@ -289,10 +306,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"Register assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"id\");",
@@ -300,6 +319,7 @@
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Register User - UNSUCCESSFUL\");"
 						],
 						"type": "text/javascript"
@@ -338,16 +358,19 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"Register assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.error).to.eql(\"Missing password\");",
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Login SUCCESSFUL\");"
 						],
 						"type": "text/javascript"
@@ -386,16 +409,19 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"Login assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(JSON.stringify(jsonData)).to.include(\"token\");",
 							"    pm.expect(jsonData).to.not.be.null;",
 							"});",
 							"",
+							"// Runs the next request",
 							"postman.setNextRequest(\"Login UNSUCCESSFUL\");"
 						],
 						"type": "text/javascript"
@@ -434,10 +460,12 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Gets response status",
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
 							"});",
 							"",
+							"// Makes assertions for the requested endpoint",
 							"pm.test(\"Login assertions\", function () {",
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData.error).to.eql(\"Missing password\");",
