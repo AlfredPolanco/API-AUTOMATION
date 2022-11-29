@@ -7,9 +7,7 @@ jobs:
   test-api:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
 
       # Install Node on the runner
       - name: Install Node
@@ -23,7 +21,7 @@ jobs:
           npm install -g newman-reporter-htmlextra
 
 
-      # Run the POSTMAN collection
-      - name: Run POSTMAN collection
+      # Run the Postman collection
+      - name: Run Postman collection
         run: |
           npm run newman
