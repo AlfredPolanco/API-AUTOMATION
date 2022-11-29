@@ -1,0 +1,29 @@
+name: Test-Build
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+
+      # Install Node on the runner
+      - name: Install Node
+        uses: actions/setup-node@v1
+
+
+      # Install the newman command line utility and also install the html extra reporter
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+
+      # Run the POSTMAN collection
+      - name: Run POSTMAN collection
+        run: |
+          npm run newman
